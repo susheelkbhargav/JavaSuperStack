@@ -1,0 +1,63 @@
+  static void superStack(String[] operations) {
+
+       ArrayList<Integer> superStack = new ArrayList<Integer>();
+        //Iterate through the number of operations
+		for(int i = 0; i < operations.length; i++){
+
+            String n = operations[i];
+			String[] arr_split = n.split(" ");
+
+            //PUSH OPERATION
+			if (arr_split[0].matches("push")) {
+				//take the integer value of from the string
+					int push_num = Integer.parseInt(arr_split[1]);
+					//push the number onto the stack
+					superStack.add(push_num);
+					//if stack is not empty print the integer
+					if (!superStack.isEmpty())
+						System.out.println(superStack.get(superStack.size()-1));
+			}
+            //if the operation is pop
+			else if (arr_split[0].equals("pop") ) {
+			    //if stack is empty print empty
+					if (superStack.isEmpty())
+						System.out.println("EMPTY");
+					else {
+						//remove element from the stack
+						superStack.remove(superStack.size()-1);
+						//if stack is empty print empty
+						if (superStack.isEmpty())
+							System.out.println("EMPTY");
+
+						//else print top of stack
+						else if (!superStack.isEmpty())
+								System.out.println(superStack.get(superStack.size()-1));
+					}
+				}
+//increment function
+				else if (arr_split[0].equals("inc")) {
+					try {
+						long x = Integer.parseInt(arr_split[1]);
+						long d = Integer.parseInt(arr_split[2]);
+
+
+
+							if (superStack.isEmpty()) {
+								System.out.println("EMPTY");
+							} //increse j elements with d
+							else {
+								for (int j = 0 ; j < x ; j++) {
+									if (superStack.size()>j)
+										superStack.set(j, (int) (superStack.get(j) + d));
+								}
+								if (!superStack.isEmpty())
+									System.out.println(superStack.get(superStack.size()-1));
+							}
+
+					} catch (NumberFormatException ex) {
+
+					}
+				}
+    }
+
+    }
